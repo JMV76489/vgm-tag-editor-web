@@ -2,11 +2,65 @@ import { useEffect, useState } from "react"
 import { readVGMFile } from "../actions/read-vgm-file.action";
 import { readVGMData as readVGMData } from "../actions/read-vgm-data.action";
 import type { VGMData } from "../interfaces/vgm-data";
+import type { GD3Data } from "../interfaces/gd3-data";
 
 export const useVGMData = () => {
     const [vgmFile, setVGMFile] = useState<File>();
     const [vgmFileData, setVGMFileData] = useState<ArrayBuffer>();
     const [vgmData, setVGMData] = useState<VGMData>();
+
+    const inputOnBlurHandler = (event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        event.target.value = event.target.value.trim();
+    }
+
+    const inputTagOnKeyDownHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
+        console.log(event.key)
+        if (event.key === 'Enter') {
+            event.currentTarget.value = event.currentTarget.value.trim();
+            event.currentTarget.blur()
+        }
+    }
+
+    const inputTagOnChangeHandler = <K extends keyof GD3Data>(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, key: K) => {
+        if (vgmData) {
+            setVGMData({
+                ...vgmData,
+                gd3Data: {
+                    ...vgmData.gd3Data,
+                    [key]: event.target.value,
+                }
+            })
+        }
+    }
+
+    const inputNumberOnKeyDownHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
+        if (Number.isNaN(Number(event.key))) {
+            event.preventDefault();
+        }
+    }
+
+    const inputNumberOnChangeHandler = <K extends keyof VGMData>(event: React.ChangeEvent<HTMLInputElement>, key: K) => {
+        let value = Number(event.target.value);
+        const inputMaxValue = Number(event.target.getAttribute("max"));
+        const inputMinValue = Number(event.target.getAttribute("min"));
+
+        if (Number.isNaN(value)) value = 0;
+
+        if (value > inputMaxValue) {
+            value = inputMaxValue;
+        } else if (value < inputMinValue) {
+            value = inputMinValue;
+        }
+
+        event.target.value = `${value}`
+
+        if (vgmData) {
+            setVGMData({
+                ...vgmData,
+                [key]: value
+            })
+        }
+    }
 
     //Handler for reading VGM file
     const handlerReadVGMFile = async () => {
@@ -48,6 +102,12 @@ export const useVGMData = () => {
 
     return {
         vgmData,
+        setVGMData,
         handleFileChange,
+        inputNumberOnChangeHandler,
+        inputTagOnChangeHandler,
+        inputOnBlurHandler,
+        inputNumberOnKeyDownHandler,
+        inputTagOnKeyDownHandler
     }
 }
