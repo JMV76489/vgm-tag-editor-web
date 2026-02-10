@@ -1,0 +1,13 @@
+.vgm-data-ui{
+    text-align: left;
+}
+
+.vgm-data-ui-version{
+    display: flex;
+    gap: 1em;
+}
+
+.gd3-data-bilingual{
+    display: flex;
+    gap: 3em;
+}
