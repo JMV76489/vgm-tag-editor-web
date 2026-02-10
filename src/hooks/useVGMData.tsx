@@ -47,11 +47,7 @@ export const useVGMData = () => {
     }
 
     return {
-        vgmFile,
-        vgmFileData,
         vgmData,
-        setVGMFileData,
-        handleReadVGMData: handlerReadVGMFile,
         handleFileChange,
     }
 }
