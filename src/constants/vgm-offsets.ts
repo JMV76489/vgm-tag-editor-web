@@ -1,0 +1,10 @@
+export const VGM_OFFSETS = {
+    EOF_OFFSET: 0x04,
+    VERSION: 0x08,
+    GD3_OFFSET: 0x14,
+    TOTAL_SAMPLES: 0x18,
+    LOOP_OFFSET: 0x1c,
+    LOOP_SAMPLES: 0x20,
+    RATE: 0x24,
+    VGM_DATA_OFFSET: 0x34
+}
