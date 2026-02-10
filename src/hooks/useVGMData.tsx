@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { readVGMFile } from "../actions/read-vgm-file.action";
-import { loadVGMData as readVGMData } from "../actions/load-vgm-data.action";
+import { readVGMData as readVGMData } from "../actions/read-vgm-data.action";
 import type { VGMData } from "../interfaces/vgm-data";
 
 export const useVGMData = () => {

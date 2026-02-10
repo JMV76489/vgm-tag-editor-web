@@ -12,7 +12,7 @@ export const bcdBufferToNumber = (buffer: Uint8Array) => {
     return result;
 }
 
-export const loadVGMData = (vgmDataBuffer: ArrayBuffer): VGMData => {
+export const readVGMData = (vgmDataBuffer: ArrayBuffer): VGMData => {
 
     //Initialize VGMData to load
     const vgmData: VGMData = {
