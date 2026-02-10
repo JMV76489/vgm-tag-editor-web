@@ -18,7 +18,7 @@ export const useVGMData = () => {
             return;
         }
     }
-    
+
     //Update VGM data object when the VGM file data loads
     useEffect(() => {
         console.log("Reading and parsing VGM Data...")

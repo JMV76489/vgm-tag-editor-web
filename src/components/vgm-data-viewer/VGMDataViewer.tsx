@@ -3,7 +3,7 @@ import { useVGMData } from "../../hooks/useVGMData";
 
 export const VGMDataViewer: React.FC = () => {
 
-    const { handleFileChange, vgmData} = useVGMData();
+    const { handleFileChange, vgmData } = useVGMData();
 
     return (
         <div className="vgm-data-ui">
@@ -24,7 +24,7 @@ export const VGMDataViewer: React.FC = () => {
                 </div>
                 <div className="vgm-data-ui__input">
                     <label htmlFor="rate">Playback rate: </label>
-                    <input type="number" value={vgmData?.rate}/>
+                    <input type="number" value={vgmData?.rate} />
                 </div>
                 <div className="vgm-data-ui-version">
                     <label>Version: </label>

@@ -6,4 +6,4 @@ export const bcdBufferToNumber = (buffer: Uint8Array) => {
         tenMultiplier *= 100;
     }
     return result;
-};
+}
