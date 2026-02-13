@@ -33,6 +33,7 @@ export const readVGMData = (vgmDataBuffer: ArrayBuffer): VGMData => {
             tagsData: 0,
         },
         gd3Data: {
+            tagsLength: 0,
             version: 0,
             trackNameEnglish: "",
             trackNameNonEnglish: "",
@@ -63,6 +64,7 @@ export const readVGMData = (vgmDataBuffer: ArrayBuffer): VGMData => {
     const dataView = new DataView(vgmDataBuffer);
 
     vgmData.eofOffset = dataView.getUint32(VGM_OFFSETS.EOF_OFFSET, true);
+    //*TODO optimize this avoiding use Uint8Array
     vgmData.versionInteger = bcdBufferToNumber(new Uint8Array(vgmDataBuffer, VGM_OFFSETS.VERSION + 0x01, 3));
     vgmData.versionDecimal = bcdBufferToNumber(new Uint8Array(vgmDataBuffer, VGM_OFFSETS.VERSION, 1));
     vgmData.gd3Offset = dataView.getUint32(VGM_OFFSETS.GD3_OFFSET, true);
@@ -87,6 +89,7 @@ export const readVGMData = (vgmDataBuffer: ArrayBuffer): VGMData => {
         };
 
         vgmData.gd3Data.version = dataView.getUint32(vgmData.gd3Offsets.version, true);
+        vgmData.gd3Data.tagsLength = dataView.getUint32(vgmData.gd3Offsets.lengthData,true);
 
         //Get the GD3 tags and split them by null terminator
         const textDecoderUtf16 = new TextDecoder('utf-16');

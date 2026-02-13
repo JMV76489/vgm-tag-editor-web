@@ -5,6 +5,7 @@ export interface GD3DataOffsets {
 }
 
 export interface GD3Data {
+    tagsLength: number;
     version: number;
     trackNameEnglish: string;
     trackNameNonEnglish: string;
