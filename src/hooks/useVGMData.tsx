@@ -5,10 +5,11 @@ import type { VGMData } from "../interfaces/vgm-data";
 import type { GD3Data } from "../interfaces/gd3-data";
 
 export const useVGMData = () => {
+    const [vgmfileName, setVGMFileName] = useState("");
     const [vgmFile, setVGMFile] = useState<File>();
     const [vgmFileData, setVGMFileData] = useState<ArrayBuffer>();
     const [vgmData, setVGMData] = useState<VGMData>();
-
+    
     const inputOnBlurHandler = (event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         event.target.value = event.target.value.trim();
     }
@@ -95,6 +96,7 @@ export const useVGMData = () => {
         if (files && files.length > 0) {
             const file = files[0];
             setVGMFile(file);
+            setVGMFileName(file.name);
         } else {
             console.log("File reading error");
         }
@@ -102,6 +104,8 @@ export const useVGMData = () => {
 
     return {
         vgmData,
+        vgmFileData,
+        vgmfileName,
         setVGMData,
         handleFileChange,
         inputNumberOnChangeHandler,
