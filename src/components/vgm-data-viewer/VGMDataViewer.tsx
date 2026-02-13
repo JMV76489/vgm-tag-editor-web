@@ -1,12 +1,15 @@
 import './VGMDataViewer.css'
 import { useVGMData } from "../../hooks/useVGMData";
 import { INPUT_NUMBER_MAX_VALUE } from '../../constants/input-number-range';
+import { saveVGMData } from '../../actions/save-vgm-data.action';
 
 export const VGMDataViewer: React.FC = () => {
 
     const {
         handleFileChange,
         vgmData,
+        vgmFileData,
+        vgmfileName,
         inputNumberOnChangeHandler,
         inputTagOnChangeHandler,
         inputOnBlurHandler,
@@ -154,7 +157,7 @@ export const VGMDataViewer: React.FC = () => {
                     <input
                         type="text"
                         value={vgmData?.gd3Data.gameReleaseDate || ""}
-                        onChange={event => inputTagOnChangeHandler(event, "vgmCreator")}
+                        onChange={event => inputTagOnChangeHandler(event, "gameReleaseDate")}
                         onKeyDown={inputTagOnKeyDownHandler}
                         onBlur={inputOnBlurHandler}
                     />
@@ -178,6 +181,15 @@ export const VGMDataViewer: React.FC = () => {
                         onChange={event => inputTagOnChangeHandler(event, "notes")}
                         onBlur={inputOnBlurHandler}
                     />
+                </div>
+                <div className='vgm-data-ui__save-button'>
+                    <button
+                        onClick={() => {
+                            if(vgmData && vgmFileData){
+                                saveVGMData(vgmData, vgmFileData,vgmfileName);
+                            }
+                        }}
+                    >Save</button>
                 </div>
             </div>
         </div>
