@@ -1,5 +1,5 @@
 import './VGMDataViewer.css'
-import { useVGMData } from "../../hooks/useVGMData";
+import { useVGMData } from '../../hooks/useVGMData';
 import { INPUT_NUMBER_MAX_VALUE } from '../../constants/input-number-range';
 import { saveVGMData } from '../../actions/save-vgm-data.action';
 
@@ -18,175 +18,175 @@ export const VGMDataViewer: React.FC = () => {
     } = useVGMData();
 
     return (
-        <div className="vgm-data-ui">
-            <div className='file-selector'>
+        <div className='viewer'>
+            <div className='viewer__section'>
                 <h2>Load a VGM file</h2>
                 <input type='file' onChange={handleFileChange} accept='.vgm, .vgz' />
             </div>
-            <div className="vgm-data-ui-header">
-                <h2>Header: </h2>
-                <div className="vgm-data-ui__label">
+            <div className='viewer__section'>
+                <h2 className='header'>Header: </h2>
+                <div>
                     <label>Track length: {vgmData?.totalSamples && `${vgmData.totalSamples} samples`}</label>
                 </div>
-                <div className="vgm-data-ui__label">
+                <div>
                     <label>Loop start: {vgmData?.loopOffset && `${vgmData.loopOffset} samples`}</label>
                 </div>
-                <div className="vgm-data-ui__label">
+                <div>
                     <label>Loop end: {vgmData?.loopSamples && `${vgmData.loopSamples} samples`}</label>
                 </div>
-                <div className="vgm-data-ui__input">
-                    <label htmlFor="rate">Playback rate: </label>
+                <div className='viewer__field'>
+                    <label htmlFor='rate'>Playback rate: </label>
                     <input
-                        type="number"
+                        type='number'
                         name='rate'
-                        value={vgmData?.rate || ""}
+                        value={vgmData?.rate}
                         min={0}
                         max={INPUT_NUMBER_MAX_VALUE.UINT_32}
-                        onChange={event => inputNumberOnChangeHandler(event, "rate")}
+                        onChange={event => inputNumberOnChangeHandler(event, 'rate')}
                         onKeyDown={inputNumberOnKeyDownHandler}
                     />
                 </div>
-                <div className="vgm-data-ui-version">
+                <div className='viewer__field viewer__field_version'>
                     <label htmlFor='version-integer'>Version: </label>
-                    <div className="vgm-data-ui__input">
+                    <div>
                         <input
-                            type="number"
+                            type='number'
                             name='version-integer'
-                            value={vgmData?.versionInteger || ""}
+                            value={vgmData?.versionInteger}
                             min={0}
                             max={INPUT_NUMBER_MAX_VALUE.VERSION_INTEGER}
-                            onChange={event => inputNumberOnChangeHandler(event, "versionInteger")}
+                            onChange={event => inputNumberOnChangeHandler(event, 'versionInteger')}
                             onKeyDown={inputNumberOnKeyDownHandler}
                         />
                     </div>
                     <span>.</span>
-                    <div className="vgm-data-ui__input">
+                    <div className='viewer__field'>
                         <input
-                            type="number"
+                            type='number'
                             name='version-decimal'
-                            value={vgmData?.versionDecimal || ""}
+                            value={vgmData?.versionDecimal}
                             min={0}
                             max={INPUT_NUMBER_MAX_VALUE.VERSION_DECIMAL}
-                            onChange={event => inputNumberOnChangeHandler(event, "versionDecimal")}
+                            onChange={event => inputNumberOnChangeHandler(event, 'versionDecimal')}
                             onKeyDown={inputNumberOnKeyDownHandler}
                         />
                     </div>
                 </div>
             </div>
-            <div className="vgm-data-ui-gd3-data">
+            <div className='viewer__section'>
                 <h2>GD3 Tags: </h2>
-                <div className="vgm-data-ui__label">
+                <div>
                     <label>GD3 Version: {vgmData?.gd3Data.version}</label>
                 </div>
-                <div className="gd3-data-bilingual">
-                    <div className="gd3-data-bilingual-english">
+                <div className='viewer__field viewer__field-bilingual'>
+                    <div className='viewer__section'>
                         <h3>English</h3>
-                        <div className="vgm-data-ui__input">
+                        <div className='viewer__field'>
                             <label>Track Name: </label>
                             <input
-                                type="text"
+                                type='text'
                                 name='track-name-english'
-                                value={vgmData?.gd3Data.trackNameEnglish || ""}
-                                onChange={event => inputTagOnChangeHandler(event, "trackNameEnglish")}
+                                value={vgmData?.gd3Data.trackNameEnglish}
+                                onChange={event => inputTagOnChangeHandler(event, 'trackNameEnglish')}
                                 onKeyDown={inputTagOnKeyDownHandler}
                                 onBlur={inputOnBlurHandler}
                             />
                         </div>
-                        <div className="vgm-data-ui__input">
+                        <div className='viewer__field'>
                             <label>Author: </label>
                             <input
-                                type="text"
+                                type='text'
                                 name='author-name-english'
-                                value={vgmData?.gd3Data.originalAuthorEnglish || ""}
-                                onChange={event => inputTagOnChangeHandler(event, "originalAuthorEnglish")}
+                                value={vgmData?.gd3Data.originalAuthorEnglish}
+                                onChange={event => inputTagOnChangeHandler(event, 'originalAuthorEnglish')}
                                 onKeyDown={inputTagOnKeyDownHandler}
                                 onBlur={inputOnBlurHandler}
                             />
                         </div>
-                        <div className="vgm-data-ui__input">
+                        <div className='viewer__field'>
                             <label>System: </label>
                             <input
-                                type="text"
+                                type='text'
                                 name='system-name-english'
-                                value={vgmData?.gd3Data.systemNameEnglish || ""}
-                                onChange={event => inputTagOnChangeHandler(event, "systemNameEnglish")}
+                                value={vgmData?.gd3Data.systemNameEnglish}
+                                onChange={event => inputTagOnChangeHandler(event, 'systemNameEnglish')}
                                 onKeyDown={inputTagOnKeyDownHandler}
                                 onBlur={inputOnBlurHandler}
                             />
                         </div>
                     </div>
-                    <div className="gd3-data-bilingual-non-english">
+                    <div className='viewer__section'>
                         <h3>Non english</h3>
-                        <div className="vgm-data-ui__input">
+                        <div className='viewer__field'>
                             <label>Track Name: </label>
                             <input
-                                type="text"
+                                type='text'
                                 name='track-name-non-english'
-                                value={vgmData?.gd3Data.trackNameNonEnglish || ""}
-                                onChange={event => inputTagOnChangeHandler(event, "trackNameNonEnglish")}
+                                value={vgmData?.gd3Data.trackNameNonEnglish}
+                                onChange={event => inputTagOnChangeHandler(event, 'trackNameNonEnglish')}
                                 onKeyDown={inputTagOnKeyDownHandler}
                                 onBlur={inputOnBlurHandler}
                             />
                         </div>
-                        <div className="vgm-data-ui__input">
+                        <div className='viewer__field'>
                             <label>Author: </label>
                             <input
-                                type="text"
+                                type='text'
                                 name='author-name-non-english'
-                                value={vgmData?.gd3Data.originalAuthorNonEnglish || ""}
-                                onChange={event => inputTagOnChangeHandler(event, "originalAuthorNonEnglish")}
+                                value={vgmData?.gd3Data.originalAuthorNonEnglish}
+                                onChange={event => inputTagOnChangeHandler(event, 'originalAuthorNonEnglish')}
                                 onKeyDown={inputTagOnKeyDownHandler}
                                 onBlur={inputOnBlurHandler}
                             />
                         </div>
-                        <div className="vgm-data-ui__input">
+                        <div className='viewer__field'>
                             <label>System: </label>
                             <input
-                                type="text"
+                                type='text'
                                 name='system-name-non-english'
-                                value={vgmData?.gd3Data.systemNameNonEnglish || ""}
-                                onChange={event => inputTagOnChangeHandler(event, "systemNameNonEnglish")}
+                                value={vgmData?.gd3Data.systemNameNonEnglish}
+                                onChange={event => inputTagOnChangeHandler(event, 'systemNameNonEnglish')}
                                 onKeyDown={inputTagOnKeyDownHandler}
                                 onBlur={inputOnBlurHandler}
                             />
                         </div>
                     </div>
                 </div>
-                <div className="vgm-data-ui__input">
+                <div className='viewer__field'>
                     <label>Release date: </label>
                     <input
-                        type="text"
-                        value={vgmData?.gd3Data.gameReleaseDate || ""}
-                        onChange={event => inputTagOnChangeHandler(event, "gameReleaseDate")}
+                        type='text'
+                        value={vgmData?.gd3Data.gameReleaseDate}
+                        onChange={event => inputTagOnChangeHandler(event, 'gameReleaseDate')}
                         onKeyDown={inputTagOnKeyDownHandler}
                         onBlur={inputOnBlurHandler}
                     />
                 </div>
-                <div className="vgm-data-ui__input">
+                <div className='viewer__field'>
                     <label>VGM Creator: </label>
                     <input
-                        type="text"
+                        type='text'
                         name='creator'
-                        value={vgmData?.gd3Data.vgmCreator || ""}
-                        onChange={event => inputTagOnChangeHandler(event, "vgmCreator")}
+                        value={vgmData?.gd3Data.vgmCreator}
+                        onChange={event => inputTagOnChangeHandler(event, 'vgmCreator')}
                         onKeyDown={inputTagOnKeyDownHandler}
                         onBlur={inputOnBlurHandler}
                     />
                 </div>
-                <div className="vgm-data-ui__text-area">
+                <div className='viewer__field'>
                     <label>Notes: </label>
                     <br />
                     <textarea
-                        value={vgmData?.gd3Data.notes || ""}
-                        onChange={event => inputTagOnChangeHandler(event, "notes")}
+                        value={vgmData?.gd3Data.notes}
+                        onChange={event => inputTagOnChangeHandler(event, 'notes')}
                         onBlur={inputOnBlurHandler}
                     />
                 </div>
-                <div className='vgm-data-ui__save-button'>
+                <div className='viewer__field'>
                     <button
                         onClick={() => {
-                            if(vgmData && vgmFileData){
-                                saveVGMData(vgmData, vgmFileData,vgmfileName);
+                            if (vgmData && vgmFileData) {
+                                saveVGMData(vgmData, vgmFileData, vgmfileName);
                             }
                         }}
                     >Save</button>

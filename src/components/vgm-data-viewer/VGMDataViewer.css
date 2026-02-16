@@ -2,12 +2,12 @@
     text-align: left;
 }
 
-.vgm-data-ui-version{
+.viewer__field_version{
     display: flex;
     gap: 1em;
 }
 
-.gd3-data-bilingual{
+.viewer__field-bilingual{
     display: flex;
     gap: 3em;
 }
