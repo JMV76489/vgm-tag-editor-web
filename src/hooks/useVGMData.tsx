@@ -35,7 +35,7 @@ export const useVGMData = () => {
     }
 
     const inputNumberOnKeyDownHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
-        if (Number.isNaN(Number(event.key))) {
+        if(event.key != 'Backspace' && Number.isNaN(Number(event.key))){
             event.preventDefault();
         }
     }
