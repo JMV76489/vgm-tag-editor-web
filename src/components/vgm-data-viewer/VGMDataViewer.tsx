@@ -17,6 +17,8 @@ export const VGMDataViewer: React.FC = () => {
         inputTagOnKeyDownHandler
     } = useVGMData();
 
+    const isVGMDataLoaded = vgmData!= undefined;
+
     return (
         <div className='viewer'>
             <div className='viewer__section'>
@@ -39,11 +41,12 @@ export const VGMDataViewer: React.FC = () => {
                     <input
                         type='number'
                         name='rate'
-                        value={vgmData?.rate}
+                        value={isVGMDataLoaded? vgmData.rate : ""}
                         min={0}
                         max={INPUT_NUMBER_MAX_VALUE.UINT_32}
                         onChange={event => inputNumberOnChangeHandler(event, 'rate')}
                         onKeyDown={inputNumberOnKeyDownHandler}
+                        disabled={!isVGMDataLoaded}
                     />
                 </div>
                 <div className='viewer__field viewer__field_version'>
@@ -52,11 +55,12 @@ export const VGMDataViewer: React.FC = () => {
                         <input
                             type='number'
                             name='version-integer'
-                            value={vgmData?.versionInteger}
+                            value={isVGMDataLoaded ? vgmData.versionInteger : ""}
                             min={0}
                             max={INPUT_NUMBER_MAX_VALUE.VERSION_INTEGER}
                             onChange={event => inputNumberOnChangeHandler(event, 'versionInteger')}
                             onKeyDown={inputNumberOnKeyDownHandler}
+                            disabled={!isVGMDataLoaded}
                         />
                     </div>
                     <span>.</span>
@@ -64,11 +68,12 @@ export const VGMDataViewer: React.FC = () => {
                         <input
                             type='number'
                             name='version-decimal'
-                            value={vgmData?.versionDecimal}
+                            value={isVGMDataLoaded ? vgmData.versionDecimal : ""}
                             min={0}
                             max={INPUT_NUMBER_MAX_VALUE.VERSION_DECIMAL}
                             onChange={event => inputNumberOnChangeHandler(event, 'versionDecimal')}
                             onKeyDown={inputNumberOnKeyDownHandler}
+                            disabled={!isVGMDataLoaded}
                         />
                     </div>
                 </div>
@@ -86,10 +91,11 @@ export const VGMDataViewer: React.FC = () => {
                             <input
                                 type='text'
                                 name='track-name-english'
-                                value={vgmData?.gd3Data.trackNameEnglish}
+                                value={vgmData?.gd3Data.trackNameEnglish || ''}
                                 onChange={event => inputTagOnChangeHandler(event, 'trackNameEnglish')}
                                 onKeyDown={inputTagOnKeyDownHandler}
                                 onBlur={inputOnBlurHandler}
+                                disabled={!isVGMDataLoaded}
                             />
                         </div>
                         <div className='viewer__field'>
@@ -97,10 +103,11 @@ export const VGMDataViewer: React.FC = () => {
                             <input
                                 type='text'
                                 name='author-name-english'
-                                value={vgmData?.gd3Data.originalAuthorEnglish}
+                                value={vgmData?.gd3Data.originalAuthorEnglish || ''}
                                 onChange={event => inputTagOnChangeHandler(event, 'originalAuthorEnglish')}
                                 onKeyDown={inputTagOnKeyDownHandler}
                                 onBlur={inputOnBlurHandler}
+                                disabled={!isVGMDataLoaded}
                             />
                         </div>
                         <div className='viewer__field'>
@@ -108,10 +115,11 @@ export const VGMDataViewer: React.FC = () => {
                             <input
                                 type='text'
                                 name='system-name-english'
-                                value={vgmData?.gd3Data.systemNameEnglish}
+                                value={vgmData?.gd3Data.systemNameEnglish || ''}
                                 onChange={event => inputTagOnChangeHandler(event, 'systemNameEnglish')}
                                 onKeyDown={inputTagOnKeyDownHandler}
                                 onBlur={inputOnBlurHandler}
+                                disabled={!isVGMDataLoaded}
                             />
                         </div>
                     </div>
@@ -122,10 +130,11 @@ export const VGMDataViewer: React.FC = () => {
                             <input
                                 type='text'
                                 name='track-name-non-english'
-                                value={vgmData?.gd3Data.trackNameNonEnglish}
+                                value={vgmData?.gd3Data.trackNameNonEnglish || ''}
                                 onChange={event => inputTagOnChangeHandler(event, 'trackNameNonEnglish')}
                                 onKeyDown={inputTagOnKeyDownHandler}
                                 onBlur={inputOnBlurHandler}
+                                disabled={!isVGMDataLoaded}
                             />
                         </div>
                         <div className='viewer__field'>
@@ -133,10 +142,11 @@ export const VGMDataViewer: React.FC = () => {
                             <input
                                 type='text'
                                 name='author-name-non-english'
-                                value={vgmData?.gd3Data.originalAuthorNonEnglish}
+                                value={vgmData?.gd3Data.originalAuthorNonEnglish || ''}
                                 onChange={event => inputTagOnChangeHandler(event, 'originalAuthorNonEnglish')}
                                 onKeyDown={inputTagOnKeyDownHandler}
                                 onBlur={inputOnBlurHandler}
+                                disabled={!isVGMDataLoaded}
                             />
                         </div>
                         <div className='viewer__field'>
@@ -144,10 +154,11 @@ export const VGMDataViewer: React.FC = () => {
                             <input
                                 type='text'
                                 name='system-name-non-english'
-                                value={vgmData?.gd3Data.systemNameNonEnglish}
+                                value={vgmData?.gd3Data.systemNameNonEnglish || ''}  
                                 onChange={event => inputTagOnChangeHandler(event, 'systemNameNonEnglish')}
                                 onKeyDown={inputTagOnKeyDownHandler}
                                 onBlur={inputOnBlurHandler}
+                                disabled={!isVGMDataLoaded}
                             />
                         </div>
                     </div>
@@ -156,10 +167,11 @@ export const VGMDataViewer: React.FC = () => {
                     <label>Release date: </label>
                     <input
                         type='text'
-                        value={vgmData?.gd3Data.gameReleaseDate}
+                        value={vgmData?.gd3Data.gameReleaseDate || ''}
                         onChange={event => inputTagOnChangeHandler(event, 'gameReleaseDate')}
                         onKeyDown={inputTagOnKeyDownHandler}
                         onBlur={inputOnBlurHandler}
+                        disabled={!isVGMDataLoaded}
                     />
                 </div>
                 <div className='viewer__field'>
@@ -167,19 +179,21 @@ export const VGMDataViewer: React.FC = () => {
                     <input
                         type='text'
                         name='creator'
-                        value={vgmData?.gd3Data.vgmCreator}
+                        value={vgmData?.gd3Data.vgmCreator || ''}
                         onChange={event => inputTagOnChangeHandler(event, 'vgmCreator')}
                         onKeyDown={inputTagOnKeyDownHandler}
                         onBlur={inputOnBlurHandler}
+                        disabled={!isVGMDataLoaded}
                     />
                 </div>
                 <div className='viewer__field'>
                     <label>Notes: </label>
                     <br />
                     <textarea
-                        value={vgmData?.gd3Data.notes}
+                        value={vgmData?.gd3Data.notes || ''}
                         onChange={event => inputTagOnChangeHandler(event, 'notes')}
                         onBlur={inputOnBlurHandler}
+                        disabled={!isVGMDataLoaded}
                     />
                 </div>
                 <div className='viewer__field'>
@@ -189,6 +203,7 @@ export const VGMDataViewer: React.FC = () => {
                                 saveVGMData(vgmData, vgmFileData, vgmfileName);
                             }
                         }}
+                        disabled={!isVGMDataLoaded}
                     >Save</button>
                 </div>
             </div>
