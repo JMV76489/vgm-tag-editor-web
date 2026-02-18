@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+    /*Colors*/
+    --body-background-color: #262626;
+    --section-background-color: #3d3d3d;
+    --section-border-color: #666666;
+    --font-color-main: #FFFFFF;
+    --input-background-color: #222222;
+    --banner-background-color: #e10f0f;
+
+    /*Paddings & margins*/
+    --section-margin-bottom: 16px;
+    --section-padding: 16px;
+    --section-border: #666666 solid 4px;
+    --section-border-radius: 8px;
+
+    /*Borders*/
+    --input-border-radius: 2px;
+    --input-border: solid #666666 3px;
+}
+
+* {
+    margin-top: 0;
+}
+
+body {
+    background-color: var(--body-background-color);
+    color: var(--font-color-main);
+    font-family: Verdana, sans-serif;
+    font-size: small;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: "Press Start 2P", system-ui;
+}
+
+h1,
+h3 {
+    text-align: center;
+}
+
+button,
+::file-selector-button {
+    color: var(--font-color-main);
+    background-color: var(--banner-background-color);
+    border: none;
+    border-radius: 8px;
+    padding: 0;
+    padding: 12px;
+    cursor: pointer;
+    outline: inherit;
+}
+
+input[type="file"] {
+    display: flex;
+    border: var(--section-border);
+    border-radius: var(--section-border-radius);
+    padding: 6px 12px;
+    cursor: pointer;
+    width: 50%;
+}
+
+input,
+textarea {
+    background-color: var(--input-background-color);
+    color: var(--font-color-main);
+    border-radius: var(--input-border-radius);
+    border: var(--input-border);
+    padding: 4px;
+    outline: inherit;
+}
+
+textarea {
+    width: 50%;
+    resize: none;
+    min-height: 8em;
+}
+
+.viewer__field input {
+    max-width: 80%;
+}
+
+.viewer__field_misc input {
+    max-width: 50%;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+}
+
+.banner {
+    background-color: var(--banner-background-color);
+}
+
+.viewer {
+    display: flex;
+    flex-direction: column;
+    margin: 1em 12.5% 1em 12.5%;
+}
+
+.viewer__file-selector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: var(--section-margin-bottom);
+}
+
+.viewer__section {
+    background-color: #3d3d3d;
+    border: var(--section-border);
+    border-radius: var(--section-border-radius);
+    margin-bottom: var(--section-margin-bottom);
+    padding: var(--section-padding);
+}
+
+.viewer__field-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.viewer__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.viewer__field_suffix {
+    display: flex;
+    gap: 0.4em;
+    align-items: center;
+}
+
+.viewer__bilingual {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4%;
+}
+
+.viewer__idiom-section {
+    display: grid;
+    flex-direction: column;
+}
+
+.viewer__field_text-area {
+    min-height: 8em;
+}
+
+.viewer__buttons-actions {
+    display: flex;
+    justify-content: center;
+}
+
+.label-bold {
+    font-weight: bolder;
+    font-size: larger;
+}
+
