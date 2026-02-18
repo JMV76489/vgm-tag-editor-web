@@ -1,18 +1,9 @@
 import { GD3_OFFSETS } from "../constants/gd3-offsets";
 import { VGM_OFFSETS } from "../constants/vgm-offsets";
 import type { VGMData } from "../interfaces/vgm-data";
+import { bcdBufferToNumber } from "../utils/bcd-buffer-to-number";
 
-export const bcdBufferToNumber = (buffer: Uint8Array) => {
-    let result = 0;
-    let tenMultiplier = 1;
-    for (const byte of buffer) {
-        result += ((byte >> 4) * 10 + (byte & 0x0f)) * tenMultiplier;
-        tenMultiplier *= 100;
-    }
-    return result;
-}
-
-export const readVGMData = (vgmDataBuffer: ArrayBuffer): VGMData => {
+export const readVGMData = (vgmDataBuffer: ArrayBuffer): VGMData | undefined => {
 
     //Initialize VGMData to load
     const vgmData: VGMData = {
@@ -56,7 +47,7 @@ export const readVGMData = (vgmDataBuffer: ArrayBuffer): VGMData => {
     console.log("Checking VGM File Header...");
     if (vgmData.headerIdent.trim() !== "Vgm") {
         console.log("Invalid VGM Header");
-        return vgmData;
+        return undefined;
     }
     console.log("Valid VGM File");
 
