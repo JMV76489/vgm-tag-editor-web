@@ -1,0 +1,21 @@
+.tag-editor__field-section.tag-editor__field-section--general {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.tag-editor__field-section.tag-editor__field-section--bilingual {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20%;
+}
+
+@media screen and (max-width: 600px) {
+    .tag-editor__field-section.tag-editor__field-section--bilingual {
+        display: flex;
+        flex-direction: column;
+    }
+    .tag-editor__field-section.tag-editor__field-section--general {
+        width: 100%;
+    }
+}
