@@ -1,0 +1,15 @@
+.tag-editor__section.tag-editor__section--save-options {
+    width: fit-content;
+}
+
+.tag-editor__field-section.tag-editor__field-section--save-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+@media screen and (max-width: 600px) {
+    .tag-editor__section.tag-editor__section--save-options {
+        width: 100%;
+    }
+}
