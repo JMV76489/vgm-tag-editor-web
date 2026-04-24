@@ -1,0 +1,11 @@
+.tag-editor__field-section.tag-editor__field-section--file-select {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media screen and (max-width: 600px) {
+    input[type="file"] {
+        width: 100%;
+    }
+}
