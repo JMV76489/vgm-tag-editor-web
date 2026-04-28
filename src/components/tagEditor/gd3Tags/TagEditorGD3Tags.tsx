@@ -23,9 +23,11 @@ export const TagEditorGD3Tags = () => {
                         <label className="field__label">Releases date: </label>
                         <input ref={formRefs.releaseDate} className="field__input" name={tagEditorInputsName.releaseDate} onBlur={onBlurHandlerInputText}></input>
                     </div>
-                    <div className="tag-editor__field tag-editor__field--input">
-                        <label className="field__label">Notes: </label>
-                        <textarea ref={formRefs.notes} className="field__text-area" name={tagEditorInputsName.notes} cols={16} rows={8} onBlur={onBlurHandlerInputText}></textarea>
+                    <div className="tag-editor__field tag-editor__field--span">
+                        <div className="tag-editor__field--input">
+                            <label className="field__label">Notes: </label>
+                            <textarea ref={formRefs.notes} className="field__text-area" name={tagEditorInputsName.notes} cols={16} rows={8} onBlur={onBlurHandlerInputText}></textarea>
+                        </div>
                     </div>
                 </div>
                 <div className="tag-editor__field-section tag-editor__field-section--bilingual">
@@ -51,7 +53,7 @@ export const TagEditorGD3Tags = () => {
                     <div className="tag-editor__language-section">
                         <h3>Non-english</h3>
                         <div className="tag-editor__field tag-editor__field--input">
-                            <label className="field__label">Title: </label>
+                            <label className="field__label">Title:</label>
                             <input ref={formRefs.tagsNonEnglish.trackName} className="field__input" name={tagEditorInputsName.tagsNonEnglish.trackName} onBlur={onBlurHandlerInputText}></input>
                         </div>
                         <div className="tag-editor__field tag-editor__field--input">

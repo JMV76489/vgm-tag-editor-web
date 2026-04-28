@@ -1,13 +1,19 @@
 .tag-editor__field-section.tag-editor__field-section--general {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-auto-flow: column;
+    gap: 10%;
 }
 
 .tag-editor__field-section.tag-editor__field-section--bilingual {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20%;
+    gap: 10%;
+}
+
+.tag-editor__field.tag-editor__field--span {
+    grid-row: span 2;
 }
 
 @media screen and (max-width: 600px) {
@@ -15,7 +21,9 @@
         display: flex;
         flex-direction: column;
     }
+    
     .tag-editor__field-section.tag-editor__field-section--general {
-        width: 100%;
+        display: flex;
+        flex-direction: column;
     }
 }
