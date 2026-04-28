@@ -20,7 +20,7 @@
 
 @font-face {
     font-family: 'SEGA Master System';
-    src: url('./assets/font/sega-master-system.otf') format('opentype');
+    src: url('./assets/font/sega-master-system/sega-master-system.otf') format('opentype');
     font-weight: normal;
     font-size: normal;
 }
