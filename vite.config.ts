@@ -8,4 +8,5 @@ export default defineConfig({
     react(),
     babel({ presets: [reactCompilerPreset()] })
   ],
+  base: 'https://jmv76489.github.io/vgm-tag-editor-web/'
 })
